@@ -35,6 +35,7 @@ const showProducts = (products) => {
   }
 };
 
+
 let count = 0;
 
 // add to cart button
