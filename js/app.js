@@ -112,17 +112,18 @@ const updateTotal = () => {
 };
 
 // category
-const category = (products) => {
-  const allProducts = products.map((pd) => pd);
-  for (const product of allProducts) {
-    const option = document.createElement("option");
-    option.innerHTML = `
-      <option value="electronics">${product.category}</option>
-    `;
+const category = () => {
+  let categories = products.map(p => p.category);
+  let allCategories = [...new Set(categories)];
 
-    document.getElementById('category').appendChild(option);
-    }
-  
+  let select = document.getElementById('category');
+  let options = `<option value="">Category</option>`
+  for (const category of allCategories) {
+    options += `
+      <option value="${category}">${category}</option>
+    `;
+  }
+  select.innerHTML = options;
 }
 
 // search filter
@@ -142,10 +143,10 @@ const searchFilter = category => {
 }
 
 /* 
-let categories = products.map(p => p.category);
-let allCategories = [...new Set(categories)];
+
 */
 
 searchFilter('');
 
 loadProducts();
+category();
